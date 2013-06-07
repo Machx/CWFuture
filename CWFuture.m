@@ -3,8 +3,6 @@
 //  ObjC_Playground
 //
 //  Created by Colin Wheeler on 2/26/13.
-//  Copyright (c) 2013 Colin Wheeler. All rights reserved.
-//
 
 Copyright (c) 2013, Colin Wheeler
 All rights reserved.
