@@ -47,6 +47,15 @@ typedef id (^CWFutureBlock)(void);
 	return future;
 }
 
+-(id)initWithFutureBlock:(CWFutureBlock)block {
+	self = [super init];
+	if(self == nil) return nil;
+	
+	_future_block = block;
+	
+	return self;
+}
+
 -(id)resolveFuture {
 	dispatch_once(&_once, ^{
 		id returnedObject = self.future_block();
