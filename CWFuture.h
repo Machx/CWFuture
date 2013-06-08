@@ -34,23 +34,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 @interface CWFuture : NSObject
 
 /**
- Returns a CWFuture instance copying the block
+ Returns a new CWFuture instance copying the block
  
- Block - the expression returned from this becomes the future value
+ @param block The expression returned from this becomes the future value
+ @return a new CWFuture instance
  */
 +(id)futureWithBlock:(id (^)(void))block;
 
 /**
  Resolves the future and returns the value from the Future
  
- @return the value from tne return expression passed into the block
+ @return the blocks return value which is resolve
  */
 -(id)resolveFuture;
 
 /**
- Returns a BOOl indicated if the future has been resolved or not
+ Returns a BOOl indicating if the future has been resolved or not
  
- @return BOOL indicating if the future has been resolved or not
+ @return YES if the future has been resolved, NO otherwise
  */
 -(BOOL)futureResolved;
 
