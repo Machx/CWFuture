@@ -41,9 +41,13 @@ typedef id (^CWFutureBlock)(void);
 
 @implementation CWFuture
 
-+(id)futureWithBlock:(id (^)(void))block {
-	CWFuture *future = [CWFuture new];
-	future.future_block = [block copy];
++(id)futureWithBlock:(CWFutureBlock)block {
+	if(block == nil) {
+		NSLog(@"%s %s %i: Block argument is nil! Returning nil",
+			  __PRETTY_FUNCTION__,__FILE__,__LINE__);
+		return nil;
+	}
+	CWFuture *future = [[CWFuture alloc] initWithFutureBlock:block];
 	return future;
 }
 
