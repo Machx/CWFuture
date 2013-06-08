@@ -31,10 +31,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "CWFuture.h"
 
+//TODO: document how -class, -hash,etc return the resolved values class, hash,etc.
+
 typedef id (^CWFutureBlock)(void);
 
 @interface CWFuture ()
-@property (nonatomic, assign) dispatch_once_t once;
 @property (nonatomic, copy) CWFutureBlock future_block;
 @property (nonatomic, retain) id resolvedValue;
 @end
@@ -61,7 +62,8 @@ typedef id (^CWFutureBlock)(void);
 }
 
 -(id)resolveFuture {
-	dispatch_once(&_once, ^{
+	static dispatch_once_t once;
+	dispatch_once(&once, ^{
 		id returnedObject = self.future_block();
 		self.resolvedValue = (returnedObject ?: nil);
 		if (self.resolvedValue) self.future_block = nil;
