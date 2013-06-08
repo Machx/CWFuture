@@ -31,7 +31,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "CWFutureTests.h"
 #import "CWFuture.h"
-#import "CWBlockNotificationCenter.h"
 
 CWFuture *future = nil;
 
@@ -43,6 +42,10 @@ beforeAll(^{
 	it(@"should return NO when the future value hasn't been resolved", ^{
 		expect([future futureResolved]).to.beFalsy();
 	});
+});
+
+it(@"+futureWithBlock should return nil when passed nil", ^{
+	expect([CWFuture futureWithBlock:nil]).to.beNil();
 });
 
 it(@"should capture an expression and return its result", ^{
