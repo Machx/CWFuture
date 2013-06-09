@@ -64,9 +64,8 @@ typedef id (^CWFutureBlock)(void);
 -(id)resolveFuture {
 	static dispatch_once_t once;
 	dispatch_once(&once, ^{
-		id returnedObject = self.future_block();
-		self.resolvedValue = (returnedObject ?: nil);
-		if (self.resolvedValue) self.future_block = nil;
+		self.resolvedValue = self.future_block();
+		self.future_block = nil;
 	});
 	return self.resolvedValue;
 }
