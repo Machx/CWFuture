@@ -43,6 +43,11 @@ typedef id (^CWFutureBlock)(void);
 @implementation CWFuture
 
 +(id)futureWithBlock:(CWFutureBlock)block {
+	/**
+	 Designated method for returning new CWFuture instances. 
+	 As such if the block is nil then there is no point in 
+	 returning a new future instance.
+	 */
 	if(block == nil) {
 		NSLog(@"%s %s %i: Block argument is nil! Returning nil",
 			  __PRETTY_FUNCTION__,__FILE__,__LINE__);
