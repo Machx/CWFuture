@@ -46,6 +46,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /**
  Returns a new CWFuture instance copying the block
  
+ This method is the designated method for returning new CWFuture
+ instances. If the block passed to it is nil, then this method
+ logs an error message and returns nil.
+ 
  @param block The expression returned from this becomes the future value
  @return a new CWFuture instance
  */
