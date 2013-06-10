@@ -61,7 +61,7 @@ it(@"should return the hash of the resolved future", ^{
 });
 
 it(@"should return if the resolved future is a member of a class", ^{
-	expect([future isMemberOfClass:NSClassFromString(@"__NSCFNumber")]).to.beTruthy();
+	expect([future isMemberOfClass:[CWFuture class]]).notTo.beTruthy();
 });
 
 it(@"should return if the resolved future is a kind of a class", ^{
