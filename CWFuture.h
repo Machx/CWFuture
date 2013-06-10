@@ -31,6 +31,16 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
 
+/**
+ CWFuture is a class that carries a future value in the form of an expression 
+ returned from a block passed to it.
+ 
+ The future value is always nil until the future value is queried and then the 
+ value is resolved and the block destroyed. Calling -class, -superclass,
+ -isKindOfClass, -isMemberOfClass, -hash all resolve the future value and 
+ return the result as if you called that on the future value itself.
+ */
+
 @interface CWFuture : NSObject
 
 /**
