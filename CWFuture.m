@@ -31,8 +31,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "CWFuture.h"
 
-//TODO: document how -class, -hash,etc return the resolved values class, hash,etc.
-
 typedef id (^CWFutureBlock)(void);
 
 @interface CWFuture ()
