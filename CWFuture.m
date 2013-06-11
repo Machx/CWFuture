@@ -56,9 +56,6 @@ typedef id (^CWFutureBlock)(void);
 }
 
 -(id)initWithFutureBlock:(CWFutureBlock)block {
-	self = [super init];
-	if(self == nil) return nil;
-	
 	_future_block = block;
 	
 	return self;
@@ -71,6 +68,10 @@ typedef id (^CWFutureBlock)(void);
 		self.future_block = nil;
 	});
 	return self.resolvedValue;
+}
+
+-(BOOL)futureResolved {
+	return ((BOOL)self.resolvedValue);
 }
 
 -(Class)class {
@@ -89,12 +90,19 @@ typedef id (^CWFutureBlock)(void);
 	return [[self resolveFuture] isMemberOfClass:aClass];
 }
 
+-(BOOL)isEqual:(id)object {
+	return [[self resolvedValue] isEqual:object];
+}
+
 -(NSUInteger)hash {
 	return [[self resolveFuture] hash];
 }
 
--(BOOL)futureResolved {
-	return ((BOOL)self.resolvedValue);
+-(void)forwardInvocation:(NSInvocation *)invocation {
+	if (!self.futureResolved) {
+		[self resolvedValue];
+	}
+	[invocation setTarget:self.resolvedValue];
 }
 
 @end
