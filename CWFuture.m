@@ -40,6 +40,8 @@ typedef id (^CWFutureBlock)(void);
 
 @implementation CWFuture
 
+#pragma mark Initialization -
+
 +(id)futureWithBlock:(CWFutureBlock)block {
 	/**
 	 Designated method for returning new CWFuture instances. 
@@ -61,6 +63,8 @@ typedef id (^CWFutureBlock)(void);
 	return self;
 }
 
+#pragma mark Future Resolution -
+
 -(id)resolveFuture {
 	static dispatch_once_t once;
 	dispatch_once(&once, ^{
@@ -73,6 +77,8 @@ typedef id (^CWFutureBlock)(void);
 -(BOOL)futureResolved {
 	return ((BOOL)self.resolvedValue);
 }
+
+#pragma mark Objective-C Forwarding -
 
 -(Class)class {
 	return [[self resolveFuture] class];
