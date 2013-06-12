@@ -108,7 +108,11 @@ typedef id (^CWFutureBlock)(void);
 	if (!self.futureResolved) {
 		[self resolvedValue];
 	}
-	[invocation setTarget:self.resolvedValue];
+	[invocation invokeWithTarget:self.resolvedValue];
+}
+
+-(id)forwardingTargetForSelector:(SEL)selector {
+    return [self resolveFuture];
 }
 
 @end
