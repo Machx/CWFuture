@@ -52,10 +52,6 @@ it(@"should capture an expression and return its result", ^{
 	expect([future resolveFuture]).to.equal(@4);
 });
 
-it(@"should return the class of the resolved future value", ^{
-	expect([future class] != [CWFuture class]).to.beTruthy();
-});
-
 it(@"should return the hash of the resolved future", ^{
 	expect([future hash] == [[future resolveFuture] hash]).to.beTruthy();
 });
