@@ -41,7 +41,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  return the result as if you called that on the future value itself.
  */
 
-@interface CWFuture : NSProxy
+@interface CWFuture : NSProxy <NSObject>
 
 /**
  Returns a new CWFuture instance copying the block
