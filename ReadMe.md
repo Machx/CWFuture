@@ -1,6 +1,14 @@
 #CWFuture
 CWFuture is a simple Objective-C Future implementation. It takes a block which it avoids resolving its return value from, until you explicitly call '-resolveFuture' on the future itself, or call a method on the future in which the future must resolve the future value to forward the method onto the returned expression. The Future for the most part pretends to be the resolved future value, for example asking the future for its class or if it is equal to another object all trigger resolving the future and calling that on the returned expression instead.
 
+An example
+```
+CWFuture *future = [CWFuture futureWithBlock:^{ return @(40 + 1 * 2); }];
+		
+NSLog(@"Components %ld",[(id)future compare:@21]);
+```
+In this example a NSNumber is returned from a block and its resolved value isn't known until the next line with the NSLog statement. In that line the CWFuture instance doesn't know how to respond to the `-compare` method so it resolves the future value and then forwards that message onto it which then returns `1` from it (a NSComparisonResult equaling NSOrderedDescending.)
+
 ##Unit Tests
 To run the unit tests you need to have linked against the [Specta](https://github.com/petejkim/specta) and [Expecta](https://github.com/petejkim/expecta/) projects.
 
