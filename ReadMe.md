@@ -1,5 +1,8 @@
 #CWFuture
-CWFuture is a simple Objective-C Future implementation. To run the unit tests you need to have linked against the [Specta](https://github.com/petejkim/specta) and [Expecta](https://github.com/petejkim/expecta/) projects.
+CWFuture is a simple Objective-C Future implementation. It takes a block which it avoids resolving its return value from, until you explicitly call '-resolveFuture' on the future itself, or call a method on the future in which the future must resolve the future value to forward the method onto the returned expression. The Future for the most part pretends to be the resolved future value, for example asking the future for its class or if it is equal to another object all trigger resolving the future and calling that on the returned expression instead.
+
+##Unit Tests
+To run the unit tests you need to have linked against the [Specta](https://github.com/petejkim/specta) and [Expecta](https://github.com/petejkim/expecta/) projects.
 
 ##License
 CWFuture is licensed under the BSD 2 clause License
