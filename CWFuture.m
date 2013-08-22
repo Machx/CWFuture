@@ -106,20 +106,6 @@ typedef id (^CWFutureBlock)(void);
 	return [[self resolveFuture] hash];
 }
 
--(void)forwardInvocation:(NSInvocation *)invocation {
-	if (!self.futureResolved) {
-		[self resolvedValue];
-	}
-	[invocation invokeWithTarget:self.resolvedValue];
-}
-
--(NSMethodSignature *)methodSignatureForSelector:(SEL)sel {
-	if (!self.futureResolved) {
-		[self resolveFuture];
-	}
-	return [[self resolveFuture] methodSignatureForSelector:sel];
-}
-
 -(id)forwardingTargetForSelector:(SEL)selector {
     return [self resolveFuture];
 }
