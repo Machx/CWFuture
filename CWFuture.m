@@ -42,7 +42,7 @@ typedef id (^CWFutureBlock)(void);
 
 #pragma mark Initialization -
 
-+(id)futureWithBlock:(CWFutureBlock)block {
++(instancetype)futureWithBlock:(CWFutureBlock)block {
 	/**
 	 Designated method for returning new CWFuture instances. 
 	 As such if the block is nil then there is no point in 

@@ -53,7 +53,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  @param block The expression returned from this becomes the future value
  @return a new CWFuture instance
  */
-+(id)futureWithBlock:(id (^)(void))block;
++(instancetype)futureWithBlock:(id (^)(void))block;
 
 /**
  Resolves the future and returns the value from the Future
