@@ -31,6 +31,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "CWFuture.h"
 
+//import CWAssertionMacros.h as standalone or part of Zangetsu
+#import <Zangetsu/CWAssertionMacros.h>
+//#import "CWAssertionMacros.h"
+
 typedef id (^CWFutureBlock)(void);
 
 @interface CWFuture ()
@@ -43,18 +47,8 @@ typedef id (^CWFutureBlock)(void);
 #pragma mark Initialization -
 
 +(instancetype)futureWithBlock:(CWFutureBlock)block {
-	/**
-	 Designated method for returning new CWFuture instances. 
-	 As such if the block is nil then there is no point in 
-	 returning a new future instance.
-	 */
-	if(block == nil) {
-		NSLog(@"%s %s %i: Block argument is nil! Returning nil",
-			  __PRETTY_FUNCTION__,__FILE__,__LINE__);
-		return nil;
-	}
-	CWFuture *future = [[CWFuture alloc] initWithFutureBlock:block];
-	return future;
+	CWAssert(block != nil);
+	return [[CWFuture alloc] initWithFutureBlock:block];
 }
 
 -(id)initWithFutureBlock:(CWFutureBlock)block {
