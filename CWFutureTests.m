@@ -44,10 +44,6 @@ beforeAll(^{
 	});
 });
 
-it(@"+futureWithBlock should return nil when passed nil", ^{
-	expect([CWFuture futureWithBlock:nil]).to.beNil();
-});
-
 it(@"should capture an expression and return its result", ^{
 	expect([future resolveFuture]).to.equal(@4);
 });
