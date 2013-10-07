@@ -58,6 +58,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /**
  Resolves the future and returns the value from the Future
  
+ This method will return the value returned by the block. Once the value is
+ assigned it is retained and then the block will be freed. Every subsequent 
+ call to this method will always return the same value.
+ 
  @return the blocks return value which is resolve
  */
 -(id)resolveFuture;
